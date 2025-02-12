@@ -1,0 +1,17 @@
+alias cdd="cd /mnt/d/Projects/"
+
+# git
+# Use git config from Windows
+alias git="git.exe"
+
+gitpa() {
+  for dir in */; do
+    echo $dir
+    if [ -d "$dir" ]; then
+      echo "Pulling in: $dir"
+      cd "$dir" && git pull
+      cd ..
+    fi
+  done
+}
+
