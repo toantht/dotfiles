@@ -1,8 +1,10 @@
 alias cdd="cd /mnt/d/Projects/"
 
-# git
-# Use git config from Windows
-alias git="git.exe"
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+    alias git="git.exe"  # Use Windows Git in WSL
+else
+    unalias git 2>/dev/null  # Remove alias if not in WSL
+fi
 
 gitpa() {
   for dir in */; do
